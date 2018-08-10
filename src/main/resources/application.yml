@@ -1,0 +1,14 @@
+spring:
+    application:
+        name: k8s-demo
+
+management:
+    endpoints:
+        web:
+            base-path: /admin
+            exposure:
+                include: "*"
+    endpoint:
+        health:
+            show-details: when_authorized
+            roles: SYSTEM_ADMIN
