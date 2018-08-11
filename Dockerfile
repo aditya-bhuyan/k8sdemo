@@ -11,10 +11,10 @@ LABEL APPLICATION_VERSION=${APP_VER}
 LABEL BUILD_NUMBER=${BUILD_NUMBER}
 LABEL APPLICATION_FULL_NAME=${APP_NAME}-${APP_VER}-${BUILD_NUMBER}
 
-COPY ${APP_NAME}-${APP_VER}.jar /${APPLICATION_FULL_NAME}.jar
+COPY ${APP_NAME}-${APP_VER}.jar /app.jar
 
 ENV JAVA_OPTS="-XX:+UseG1GC -XX:+DisableExplicitGC"
 
 EXPOSE 8080 8443
 
-ENTRYPOINT [ "java", "-jar", "-Djava.security.egd=file:/dev/./urandom", "/${APPLICATION_FULL_NAME}.jar" ]
+ENTRYPOINT [ "java", "-jar", "-Djava.security.egd=file:/dev/./urandom", "/app.jar" ]
