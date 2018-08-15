@@ -17,4 +17,7 @@ ENV JAVA_OPTS="-XX:+UseG1GC -XX:+DisableExplicitGC"
 
 EXPOSE 8080 8443
 
-ENTRYPOINT [ "java", "-jar", "-Djava.security.egd=file:/dev/./urandom", "/app.jar" ]
+COPY run-java.sh /
+RUN chmod 755 /run-java.sh
+
+ENTRYPOINT [ "/run-java.sh" ]
